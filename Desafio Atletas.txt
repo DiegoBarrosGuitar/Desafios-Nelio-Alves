@@ -1,0 +1,87 @@
+Algoritmo "Atletas"
+//Aluno: Diego Barros desafio Atletas
+Var
+N, i, quantidadeAtletas, quantidadeMulheres, quantidadeHomens : inteiro
+sexo, nome, nomeMaisAlto : caractere
+altura, peso, pesoMedio, porcentagemHomens, alturaMulheres, alturaMediaMulheres : real
+somaPeso : real
+maiorAltura : real
+
+Inicio
+
+quantidadeAtletas <- 0
+quantidadeHomens <- 0
+quantidadeMulheres <- 0
+alturaMulheres <- 0
+maiorAltura <- 0
+somaPeso <- 0
+
+escreva("Qual a quantidade de atletas? ")
+leia(quantidadeAtletas)
+
+  para i de 1 ate quantidadeAtletas faca
+     escreval("Digite os dados do atleta numero", i,":")
+     escreva("Nome: ")
+     leia(nome)
+     escreva("Sexo: ")
+     leia(sexo)
+
+     enquanto (sexo <> "M") e (sexo <> "F") faca
+        escreva("Valor invalido! Favor digitar F ou M: ")
+        leia(sexo)
+     fimenquanto
+
+     escreva("Altura: ")
+     leia(altura)
+
+     enquanto (altura <= 0) faca
+         escreva("Valor invalido! Favor digitar um valor positivo: ")
+         leia(altura)
+     fimenquanto
+
+     escreva("Peso: ")
+     leia(peso)
+
+     enquanto (peso <= 0) faca
+         escreva("Valor invalido! Favor digitar um valor positivo: ")
+         leia(peso)
+     fimenquanto
+     somaPeso <- somaPeso + peso
+
+     // calculo das alturas
+
+      se sexo = "M" entao
+           quantidadeHomens <- quantidadeHomens + 1
+        senao
+           quantidadeMulheres <- quantidadeMulheres + 1
+        fimse
+
+     se sexo = "F" entao
+        alturaMulheres <- alturaMulheres + altura
+        alturaMediaMulheres <- alturaMulheres / quantidadeMulheres
+     fimse
+
+     // mais alto
+      se altura > maiorAltura entao
+         nomeMaisAlto <- nome
+         maiorAltura <- altura
+      fimse
+
+     // calculo dos pesos
+     pesoMedio <- somaPeso / quantidadeAtletas
+
+     // porcentagens
+     porcentagemHomens <- quantidadeHomens / quantidadeAtletas * 100
+
+  fimpara
+
+   escreval
+   escreval("RELATÓRIO:")
+   escreval("Peso médio dos atletas: ",pesoMedio:4:2)
+   escreval("Atleta mais alto: ",nomeMaisAlto)
+   escreval("Porcentagem de homens: ",porcentagemHomens:4:2,"%")
+   escreval("Altura média das mulheres: ",alturaMediaMulheres:4:2)
+   
+Fimalgoritmo
+
+
